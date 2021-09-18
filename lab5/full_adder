@@ -1,0 +1,104 @@
+#! c:/iverilog-x64/bin/vvp
+:ivl_version "10.1 (stable)" "(v10_1_1)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_000000000283b210 .scope module, "full_adder_tb" "full_adder_tb" 2 1;
+ .timescale 0 0;
+v000000000288e450_0 .var "t_a", 0 0;
+v000000000288e4f0_0 .var "t_b", 0 0;
+v000000000288e590_0 .var "t_cin", 0 0;
+v000000000288e630_0 .net "t_cout", 0 0, L_00000000028907d0;  1 drivers
+v000000000288ef40_0 .net "t_s", 0 0, L_0000000002890840;  1 drivers
+S_000000000283b390 .scope module, "fulladdertb" "full_adder" 2 5, 3 1 0, S_000000000283b210;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /INPUT 1 "cin"
+    .port_info 3 /OUTPUT 1 "cout"
+    .port_info 4 /OUTPUT 1 "s"
+L_000000000283c5c0 .functor XOR 1, v000000000288e450_0, v000000000288e4f0_0, C4<0>, C4<0>;
+L_000000000288f6e0 .functor AND 1, L_000000000283c5c0, v000000000288e590_0, C4<1>, C4<1>;
+L_0000000002890760 .functor AND 1, v000000000288e450_0, v000000000288e4f0_0, C4<1>, C4<1>;
+L_00000000028907d0 .functor OR 1, L_000000000288f6e0, L_0000000002890760, C4<0>, C4<0>;
+L_0000000002890840 .functor XOR 1, L_000000000283c5c0, v000000000288e590_0, C4<0>, C4<0>;
+v000000000283b510_0 .net "a", 0 0, v000000000288e450_0;  1 drivers
+v0000000001046520_0 .net "b", 0 0, v000000000288e4f0_0;  1 drivers
+v00000000010465c0_0 .net "cin", 0 0, v000000000288e590_0;  1 drivers
+v0000000001046660_0 .net "cout", 0 0, L_00000000028907d0;  alias, 1 drivers
+v0000000001046700_0 .net "d", 0 0, L_000000000283c5c0;  1 drivers
+v00000000010467a0_0 .net "e", 0 0, L_000000000288f6e0;  1 drivers
+v0000000001046840_0 .net "f", 0 0, L_0000000002890760;  1 drivers
+v000000000288e3b0_0 .net "s", 0 0, L_0000000002890840;  alias, 1 drivers
+    .scope S_000000000283b210;
+T_0 ;
+    %vpi_call 2 8 "$display", " | A | B | C-in | C-out | S | " {0 0 0};
+    %vpi_call 2 9 "$monitor", " | %b | %b |  %b   |   %b   | %b | ", v000000000288e450_0, v000000000288e4f0_0, v000000000288e590_0, v000000000288e630_0, v000000000288ef40_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e450_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e4f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e590_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e450_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e4f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e590_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e450_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e4f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e590_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e450_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e4f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e590_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e450_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e4f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e590_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e450_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e4f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e590_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e450_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e4f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000000000288e590_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e450_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e4f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000000000288e590_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 18 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "full_adder_tb.v";
+    "full_adder.v";

@@ -1,0 +1,67 @@
+#! c:/iverilog-x64/bin/vvp
+:ivl_version "10.1 (stable)" "(v10_1_1)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0000000000f68a30 .scope module, "q2_tb" "q2_tb" 2 1;
+ .timescale 0 0;
+v0000000001046660_0 .var "t_a", 0 0;
+v0000000001046700_0 .var "t_b", 0 0;
+v00000000010467a0_0 .net "t_p", 0 0, L_0000000000fbb970;  1 drivers
+v0000000001046840_0 .net "t_q", 0 0, L_0000000000fbba50;  1 drivers
+v0000000000fbb860_0 .net "t_r", 0 0, L_0000000000fbb9e0;  1 drivers
+S_0000000000f69010 .scope module, "q2tb" "q2" 2 5, 3 1 0, S_0000000000f68a30;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A"
+    .port_info 1 /INPUT 1 "B"
+    .port_info 2 /OUTPUT 1 "P"
+    .port_info 3 /OUTPUT 1 "Q"
+    .port_info 4 /OUTPUT 1 "R"
+L_0000000001046fb0 .functor NOT 1, v0000000001046660_0, C4<0>, C4<0>, C4<0>;
+L_0000000000fbb900 .functor NOT 1, v0000000001046700_0, C4<0>, C4<0>, C4<0>;
+L_0000000000fbb970 .functor AND 1, v0000000001046660_0, L_0000000000fbb900, C4<1>, C4<1>;
+L_0000000000fbb9e0 .functor AND 1, L_0000000001046fb0, v0000000001046700_0, C4<1>, C4<1>;
+L_0000000000fbba50 .functor XNOR 1, v0000000001046660_0, v0000000001046700_0, C4<0>, C4<0>;
+v0000000000f68bb0_0 .net "A", 0 0, v0000000001046660_0;  1 drivers
+v0000000000f68c50_0 .net "A1", 0 0, L_0000000001046fb0;  1 drivers
+v0000000000f69190_0 .net "B", 0 0, v0000000001046700_0;  1 drivers
+v0000000000f69230_0 .net "B1", 0 0, L_0000000000fbb900;  1 drivers
+v0000000000f692d0_0 .net "P", 0 0, L_0000000000fbb970;  alias, 1 drivers
+v0000000001046520_0 .net "Q", 0 0, L_0000000000fbba50;  alias, 1 drivers
+v00000000010465c0_0 .net "R", 0 0, L_0000000000fbb9e0;  alias, 1 drivers
+    .scope S_0000000000f68a30;
+T_0 ;
+    %vpi_call 2 8 "$display", " | A | B | P | Q | R | " {0 0 0};
+    %vpi_call 2 9 "$monitor", " | %b | %b | %b | %b | %b | ", v0000000001046660_0, v0000000001046700_0, v00000000010467a0_0, v0000000001046840_0, v0000000000fbb860_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001046660_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001046700_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001046660_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001046700_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001046660_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001046700_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001046660_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001046700_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 14 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "q2_tb.v";
+    "q2.v";
